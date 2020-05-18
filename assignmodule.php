@@ -1,3 +1,7 @@
+<html>
+  <link rel="stylesheet" type="text/css" href="css/main2.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</html>
 <?php
 
 include("_includes/config.inc");
@@ -24,8 +28,8 @@ if (isset($_SESSION['id'])) {
      $sql = "select * from module";
      $result = mysqli_query($conn, $sql);
 
-     $data['content'] .= "<form name='frmassignmodule' action='' method='post' >";
-     $data['content'] .= "Select a module to assign<br/>";
+     $data['content'] .= "</br><div class='form-style-6'><form name='frmassignmodule' action='' method='post' >";
+     $data['content'] .= "<h2 id='title'>Select a module:<h2><br/>";
      $data['content'] .= "<select name='selmodule' >";
      // Display the module name sin a drop down selection box
      while($row = mysqli_fetch_array($result)) {
@@ -33,7 +37,7 @@ if (isset($_SESSION['id'])) {
      }
      $data['content'] .= "</select><br/>";
      $data['content'] .= "<input type='submit' name='confirm' value='Save' />";
-     $data['content'] .= "</form>";
+     $data['content'] .= "</form></div>";
    }
 
    // render the template

@@ -1,3 +1,7 @@
+<html>
+  <link rel="stylesheet" type="text/css" href="css/main2.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</html>
 <?php
 
 include("_includes/config.inc");
@@ -14,14 +18,23 @@ if (isset($_SESSION['id'])) {
    // if the form has been submitted
    if (isset($_POST['submit'])) {
 
+     $firstname = $conn -> real_escape_string($_POST['txtfirstname']);
+     $lastname = $conn -> real_escape_string($_POST['txtlastname']);
+     $house = $conn -> real_escape_string($_POST['txthouse']);
+     $town = $conn -> real_escape_string($_POST['txttown']);
+     $county = $conn -> real_escape_string($_POST['txtcounty']);
+     $country = $conn -> real_escape_string($_POST['txtcountry']);
+     $postcode = $conn -> real_escape_string($_POST['txtpostcode']);
+
+
       // build an sql statment to update the student details
-      $sql = "update student set firstname ='" . $_POST['txtfirstname'] . "',";
-      $sql .= "lastname ='" . $_POST['txtlastname']  . "',";
-      $sql .= "house ='" . $_POST['txthouse']  . "',";
-      $sql .= "town ='" . $_POST['txttown']  . "',";
-      $sql .= "county ='" . $_POST['txtcounty']  . "',";
-      $sql .= "country ='" . $_POST['txtcountry']  . "',";
-      $sql .= "postcode ='" . $_POST['txtpostcode']  . "' ";
+      $sql = "update student set firstname ='" . $irstname . "',";
+      $sql .= "lastname ='" . $lastname  . "',";
+      $sql .= "house ='" . $house  . "',";
+      $sql .= "town ='" . $town . "',";
+      $sql .= "county ='" . $county  . "',";
+      $sql .= "country ='" . $country  . "',";
+      $sql .= "postcode ='" . $postcode  . "' ";
       $sql .= "where studentid = '" . $_SESSION['id'] . "';";
       $result = mysqli_query($conn,$sql);
 
@@ -40,6 +53,8 @@ if (isset($_SESSION['id'])) {
       // also http://stackoverflow.com/questions/8280360/formatting-an-array-value-inside-a-heredoc
       $data['content'] = <<<EOD
 
+      </br>
+   <div class="form-style-6">
    <h2>My Details</h2>
    <form name="frmdetails" action="" method="post">
    First Name :
@@ -58,6 +73,7 @@ if (isset($_SESSION['id'])) {
    <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
    <input type="submit" value="Save" name="submit"/>
    </form>
+   </div>
 
 EOD;
 

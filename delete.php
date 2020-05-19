@@ -11,7 +11,7 @@
       mysqli_query($conn, "Delete from student where studentid =".$id);
     }
     echo "<h2 textalign='center'>Delete was complete</h2>";
-    header('refrest:2; url=students.php');
+    header('refresh:2; url=students.php');
   }
   mysqli_close($conn);
 

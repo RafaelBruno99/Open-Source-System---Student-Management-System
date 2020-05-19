@@ -33,7 +33,9 @@ include("_includes/functions.inc");
       $sql = "insert into student (studentid, password, dob , firstname, lastname, house, town , county, country, postcode) values ('$studentid', '$hashed','$dob', '$firstname', '$lastname', '$house', '$town', '$county', '$country', '$postcode');";
       $result = mysqli_query($conn,$sql);
 
-      $data['content'] = "<p>Your details have been updated</p>";
+      $data['content'] = "<p>A new student as been added</p>";
+      $url1 = $_SERVER["REQUEST_URI"];
+      header("Refresh:2;URL=$url1");
 
    }
    else {

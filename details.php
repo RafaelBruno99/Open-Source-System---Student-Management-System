@@ -39,6 +39,8 @@ if (isset($_SESSION['id'])) {
       $result = mysqli_query($conn,$sql);
 
       $data['content'] = "<p>Your details have been updated</p>";
+      $url1 = $_SERVER["REQUEST_URI"];
+      header("Refresh:2;URL=$url1");
 
    }
    else {
